@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <template id="index">
+    <t t-call="website.layout">
+      <t t-set="title">Stock</t>
+      <div class="oe_structure">
+        <div class="container">
+
+          <h3>Stock</h3>
+
+          <table
+            class="table table-bordered"
+            style="table-layout: fixed"
+          >
+            <thead style="display: table-row-group">
+              <tr>
+                <th
+                  class="text-center"
+                  scope="col"
+                >code</th>
+                <th
+                  class="text-center"
+                  scope="col"
+                >name</th>
+                <th
+                  class="text-center"
+                  scope="col"
+                >ISIN</th>
+                <th
+                  class="text-center"
+                  scope="col"
+                >start</th>
+                <th
+                  class="text-center"
+                  scope="col"
+                >market</th>
+                <th
+                  class="text-center"
+                  scope="col"
+                >group</th>
+                <th
+                  class="text-center"
+                  scope="col"
+                >CFI</th>
+                <th
+                  class="text-center"
+                  scope="col"
+                >四大買點</th>
+                <th
+                  class="text-center"
+                  scope="col"
+                >四大賣點</th>
+                <th
+                  class="text-center"
+                  scope="col"
+                >綜合判斷</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr>
+                <td><span t-esc="stock_detail.code" /></td>
+                <td><span t-esc="stock_detail.name" /></td>
+                <td><span t-esc="stock_detail.ISIN" /></td>
+                <td><span t-esc="stock_detail.start" /></td>
+                <td><span t-esc="stock_detail.market" /></td>
+                <td><span t-esc="stock_detail.group" /></td>
+                <td><span t-esc="stock_detail.CFI" /></td>
+                <td><span t-esc="buy_point" /></td>
+                <td><span t-esc="sell_point" /></td>
+                <td><span t-esc="analyze_point" /></td>
+              </tr>
+
+            </tbody>
+          </table>
+
+          <hr/>
+
+          <table
+            class="table table-bordered"
+            style="table-layout: fixed"
+          >
+            <thead style="display: table-row-group">
+              <tr>
+                <th
+                  class="text-center"
+                  scope="col"
+                >date</th>
+                <th
+                  class="text-center"
+                  scope="col"
+                >capacity</th>
+                <th
+                  class="text-center"
+                  scope="col"
+                >turnover</th>
+                <th
+                  class="text-center"
+                  scope="col"
+                >open</th>
+                <th
+                  class="text-center"
+                  scope="col"
+                >high</th>
+                <th
+                  class="text-center"
+                  scope="col"
+                >low</th>
+                <th
+                  class="text-center"
+                  scope="col"
+                >close</th>
+                <th
+                  class="text-center"
+                  scope="col"
+                >change</th>
+                <th
+                  class="text-center"
+                  scope="col"
+                >transaction</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr
+                t-foreach="stock_datas"
+                t-as="stocka"
+              >
+                <td><span t-esc="stocka.date" /></td>
+                <td><span t-esc="stocka.capacity" /></td>
+                <td><span t-esc="stocka.turnover" /></td>
+                <td><span t-esc="stocka.open" /></td>
+                <td><span t-esc="stocka.high" /></td>
+                <td><span t-esc="stocka.low" /></td>
+                <td><span t-esc="stocka.close" /></td>
+                <td><span t-esc="stocka.change" /></td>
+                <td><span t-esc="stocka.transaction" /></td>
+              </tr>
+
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </t>
+  </template>
+
+</odoo>
