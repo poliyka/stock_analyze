@@ -2,15 +2,10 @@
 <odoo>
     <!-- Top Menu -->
     <menuitem id="menu_stock_root"
-              name="Stock"
+              name="股票"
               />
 
     <!-- Stock -->
-    <menuitem id="menu_stock_select_1"
-              name="股票"
-              parent="menu_stock_root"
-              />
-
     <record id="action_stock" model="ir.actions.act_window">
         <field name="name">股票基本資訊</field>
         <field name="res_model">stock</field>
@@ -18,24 +13,10 @@
     </record>
 
     <menuitem id="menu_stock_option_1"
-              name="股票"
+              name="股票清單"
 	            action="action_stock"
-              parent="menu_stock_select_1"
+              parent="menu_stock_root"
               />
-
-    <!-- Stock Storage -->
-    <record id="action_stock_storage" model="ir.actions.act_window">
-        <field name="name">股票歷史資訊</field>
-        <field name="res_model">stock.storage</field>
-        <field name="view_mode">tree,form</field>
-    </record>
-
-    <menuitem id="menu_stock_option_2"
-              name="股票歷史資訊"
-	            action="action_stock_storage"
-              parent="menu_stock_select_1"
-              />
-
 
 </odoo>
 

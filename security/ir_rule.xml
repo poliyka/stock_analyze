@@ -7,7 +7,7 @@
             <field name="name">Stock User</field>
             <field name="model_id" ref="model_stock"/>
             <field name="groups" eval="[(4, ref('stock_analyze.stock_user'))]"/>
-            <field name="domain_force">[('user_id','=',user.id)]</field>
+            <field name="domain_force">[(1, '=', 1)]</field>
             <field name="perm_create" eval="False"/>
             <field name="perm_unlink" eval="False"/>
         </record>
@@ -24,7 +24,7 @@
             <field name="name">Stock Storage User</field>
             <field name="model_id" ref="model_stock_storage"/>
             <field name="groups" eval="[(4, ref('stock_analyze.stock_user'))]"/>
-            <field name="domain_force">[('user_id','=',user.id)]</field>
+            <field name="domain_force">[(1,'=', 1)]</field>
             <field name="perm_create" eval="False"/>
             <field name="perm_unlink" eval="False"/>
         </record>

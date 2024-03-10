@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <menuitem id="menu_simulate_data"
+              name="更新資料"
+              parent="menu_stock_root"
+              />
+
+    <!-- simulate Data -->
+
+    <record id="ir_rule_inject_stocks_data_group_user" model="ir.rule">
+        <field name="name">更新 Stocks 資料</field>
+        <field name="model_id" ref="model_inject_stocks_data"/>
+        <field name="groups" eval="[(4, ref('stock_analyze.stock_user'))]"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="ir_rule_inject_stocks_data_group_manager" model="ir.rule">
+        <field name="name">更新 Stocks 資料</field>
+        <field name="model_id" ref="model_inject_stocks_data"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('stock_analyze.stock_manager'))]"/>
+    </record>
+
+    <record id="wizard_inject_stocks_data" model="ir.ui.view">
+      <field name="name">更新 Stocks 資料</field>
+      <field name="model">inject.stocks.data</field>
+      <field name="arch" type="xml">
+        <form string="Inject Simulate">
+          <h4>更新 Stocks 資料</h4>
+          <footer>
+            <button string="Confirm" name="simulate" type="object" class="oe_highlight" />
+            <button string="Cancel" class="oe_link" special="cancel" />
+          </footer>
+        </form>
+      </field>
+    </record>
+
+    <record id="action_inject_stocks_data" model="ir.actions.act_window">
+      <field name="name">更新 Stocks 資料</field>
+      <field name="res_model">inject.stocks.data</field>
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="wizard_inject_stocks_data" />
+      <field name="target">new</field>
+    </record>
+
+    <menuitem
+      id="menu_inject_stocks_data"
+      action="action_inject_stocks_data"
+      name="更新 Stocks 資料"
+      parent="menu_simulate_data"
+      sequence="1"
+    />
+
+    <!-- email outgoing server Settings -->
+    <record id="ir_rule_inject_outgoing_server_group_user" model="ir.rule">
+        <field name="name">建立 Email Outgoing Server</field>
+        <field name="model_id" ref="model_inject_outgoing_server"/>
+        <field name="groups" eval="[(4, ref('stock_analyze.stock_user'))]"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="ir_rule_inject_outgoing_server_group_manager" model="ir.rule">
+        <field name="name">建立 Email Outgoing Server</field>
+        <field name="model_id" ref="model_inject_outgoing_server"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('stock_analyze.stock_manager'))]"/>
+    </record>
+
+    <record id="wizard_inject_outgoing_server" model="ir.ui.view">
+      <field name="name">建立 Email Outgoing Server</field>
+      <field name="model">inject.outgoing.server</field>
+      <field name="arch" type="xml">
+        <form string="Inject Outgoing Server">
+          <h4>第一次建設資料使用</h4>
+          <p>建立 Email Outgoing Server</p>
+          <footer>
+            <button string="Confirm" name="simulate" type="object" class="oe_highlight" />
+            <button string="Cancel" class="oe_link" special="cancel" />
+          </footer>
+        </form>
+      </field>
+    </record>
+
+    <record id="action_inject_outgoing_server" model="ir.actions.act_window">
+      <field name="name">建立 Email Outgoing Server</field>
+      <field name="res_model">inject.outgoing.server</field>
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="wizard_inject_outgoing_server" />
+      <field name="target">new</field>
+    </record>
+
+    <menuitem
+      id="menu_inject_outgoing_server"
+      action="action_inject_outgoing_server"
+      name="建立 Email Outgoing Server"
+      parent="menu_simulate_data"
+      sequence="2"
+    />
+
+  </data>
+</odoo>

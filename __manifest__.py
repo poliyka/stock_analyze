@@ -24,5 +24,7 @@
         "views/menu.xml",
         "views/view.xml",
         "templates/index.xml",
+        "wizard/ir.model.access.csv",
+        "wizard/simulate_data.xml",
     ],
 }

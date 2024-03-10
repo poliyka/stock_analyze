@@ -24,7 +24,7 @@ class StockControllers(http.Controller):
         spr = SingleProxyProvider({proxy.split(":")[0]: proxy})
         twstock.proxy.configure_proxy_provider(spr)
 
-        context = self.create_stock_data("2230", (2021, 7))
+        context = self.create_stock_data("2330", (2024, 1))
 
         return http.request.render("stock_analyze.index", context)
 

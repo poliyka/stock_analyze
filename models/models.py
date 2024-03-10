@@ -12,13 +12,13 @@ class Stock(models.Model):
     _name = "stock"
     _description = "股票基本資訊"
 
-    type = fields.Char(string="類型")
-    code = fields.Char(string="代號")
+    type = fields.Char(string="股票類型")
+    code = fields.Char(string="代號", unique=True)
     name = fields.Char(string="股名")
     ISIN = fields.Char(string="ISIN")
     start = fields.Date(string="上市日期")
-    market = fields.Char(string="是否上櫃")
-    group = fields.Char(string="群組")
+    market = fields.Char(string="市場")
+    group = fields.Char(string="產業類型")
     CFI = fields.Char(string="CFI")
 
     storage_ids = fields.One2many(
