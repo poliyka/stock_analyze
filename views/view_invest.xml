@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<odoo>
+
+  <!-- Stock -->
+  <record id="form_stock_invest" model="ir.ui.view">
+    <field name="name">入帳紀錄</field>
+    <field name="model">stock.invest</field>
+    <field name="arch" type="xml">
+      <form string="入帳紀錄">
+        <sheet>
+          <group>
+            <field name="date" />
+            <field name="payment" />
+            <field name="user_id" />
+            <field name="bank_id" />
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="tree_stock_invest" model="ir.ui.view">
+    <field name="name">入帳紀錄</field>
+    <field name="model">stock.invest</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="date" />
+        <field name="payment" />
+        <field name="user_id"  widget="selection"/>
+        <field name="bank_id" />
+      </tree>
+    </field>
+  </record>
+
+</odoo>

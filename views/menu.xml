@@ -12,9 +12,54 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <menuitem id="menu_stock_option_1"
+    <menuitem id="menu_stock"
               name="股票清單"
 	            action="action_stock"
+              parent="menu_stock_root"
+              />
+
+    <!-- User -->
+    <record id="action_stock_user" model="ir.actions.act_window">
+        <field name="name">投資人</field>
+        <field name="res_model">stock.user</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_stock_user"
+              name="投資人"
+	            action="action_stock_user"
+              parent="menu_stock_root"
+              />
+
+    <!-- Bank -->
+    <record id="action_stock_bank" model="ir.actions.act_window">
+        <field name="name">帳戶</field>
+        <field name="res_model">stock.bank</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_stock_bank"
+              name="帳戶"
+	            action="action_stock_bank"
+              parent="menu_stock_root"
+              />
+
+    <!-- Invest -->
+    <record id="action_stock_invest" model="ir.actions.act_window">
+        <field name="name">入帳紀錄</field>
+        <field name="res_model">stock.invest</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_stock_invest"
+              name="入帳紀錄"
+	            action="action_stock_invest"
+              parent="menu_stock_root"
+              />
+
+    <!-- Other -->
+    <menuitem id="menu_stock_other"
+              name="其他"
               parent="menu_stock_root"
               />
 

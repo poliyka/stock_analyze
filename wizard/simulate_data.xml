@@ -4,11 +4,10 @@
 
     <menuitem id="menu_simulate_data"
               name="更新資料"
-              parent="menu_stock_root"
+              parent="menu_stock_other"
               />
 
     <!-- simulate Data -->
-
     <record id="ir_rule_inject_stocks_data_group_user" model="ir.rule">
         <field name="name">更新 Stocks 資料</field>
         <field name="model_id" ref="model_inject_stocks_data"/>

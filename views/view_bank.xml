@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<odoo>
+
+  <!-- Stock -->
+  <record id="form_stock_bank" model="ir.ui.view">
+    <field name="name">帳戶</field>
+    <field name="model">stock.bank</field>
+    <field name="arch" type="xml">
+      <form string="帳戶">
+        <sheet>
+          <group>
+            <field name="name" />
+            <field name="code" />
+            <field name="account" />
+            <field name="deposit" />
+            <field name="assets" />
+          </group>
+          <notebook>
+            <page string="投資清單">
+              <field name="invest_ids" />
+            </page>
+          </notebook>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="tree_stock_bank" model="ir.ui.view">
+    <field name="name">帳戶</field>
+    <field name="model">stock.bank</field>
+    <field name="arch" type="xml">
+      <tree>
+        <field name="name" />
+        <field name="code" />
+        <field name="account" />
+        <field name="deposit" />
+        <field name="assets" />
+      </tree>
+    </field>
+  </record>
+
+</odoo>

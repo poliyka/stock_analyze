@@ -69,7 +69,6 @@ class StockControllers(http.Controller):
                 "market": stock_detail.market,
                 "group": stock_detail.group,
                 "CFI": stock_detail.CFI,
-                "storage_ids": storages,
             }
         )
 
