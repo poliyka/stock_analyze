@@ -26,7 +26,7 @@
       <tree>
         <field name="date" />
         <field name="payment" />
-        <field name="user_id"  widget="selection"/>
+        <field name="user_id" />
         <field name="bank_id" />
       </tree>
     </field>

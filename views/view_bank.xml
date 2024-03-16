@@ -19,6 +19,9 @@
             <page string="投資清單">
               <field name="invest_ids" />
             </page>
+            <page string="投資清單">
+              <field name="invest_history_ids" />
+            </page>
           </notebook>
         </sheet>
       </form>

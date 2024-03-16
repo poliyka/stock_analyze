@@ -26,6 +26,7 @@
         "views/view_bank.xml",
         "views/view_user.xml",
         "views/view_invest.xml",
+        "views/view_invest_history.xml",
         "templates/index.xml",
         "wizard/ir.model.access.csv",
         "wizard/simulate_data.xml",

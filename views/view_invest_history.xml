@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<odoo>
+
+  <!-- Stock -->
+  <record id="form_stock_invest_history" model="ir.ui.view">
+    <field name="name">投資紀錄</field>
+    <field name="model">stock.invest.history</field>
+    <field name="arch" type="xml">
+      <form string="投資紀錄">
+        <sheet>
+          <div class="oe_title mb24">
+            <field name="date" />
+          </div>
+          <group>
+            <group>
+              <field name="bank_id" />
+            </group>
+            <group>
+              <field name="stock_id" />
+              <field name="stock_code" />
+              <field name="stock_type" />
+              <field name="stock_market" />
+            </group>
+          </group>
+          <br/>
+          <group>
+            <group>
+              <field name="current_price" />
+              <field name="shares" />
+              <field name="lots" />
+              <field name="amount" />
+            </group>
+            <group>
+              <field name="net_payment_receipt" />
+              <field name="transaction_fee" />
+              <field name="transaction_tax" />
+              <field name="payment_type" />
+              <field name="net_profit_loss" />
+            </group>
+          </group>
+          <br/>
+          <group>
+            <field name="note" />
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record id="tree_stock_invest_history" model="ir.ui.view">
+    <field name="name">投資紀錄</field>
+    <field name="model">stock.invest.history</field>
+    <field name="arch" type="xml">
+      <tree default_order="date"
+          multi_edit="1"
+          editable="top"
+          decoration-danger="payment_type == 'buy'"
+          decoration-success="payment_type == 'sell'"
+          decoration-info="payment_type == 'subscription'"
+          decoration-muted="payment_type == 'redemption'"
+          decoration-primary="payment_type == 'rights'"
+      >
+      <header>
+        <button name="update_compute" type="object" class="oe_highlight"
+                string="更新計算欄位"/>
+      </header>
+        <field name="date" />
+        <field name="bank_id" />
+        <field name="stock_id" />
+        <field name="current_price" />
+        <field name="shares" />
+        <field name="lots" />
+        <field name="amount" />
+        <field name="net_payment_receipt" />
+        <field name="transaction_fee" />
+        <field name="transaction_tax" />
+        <field name="payment_type" widget="badge"
+          decoration-danger="payment_type == 'buy'"
+          decoration-success="payment_type == 'sell'"
+          decoration-info="payment_type == 'subscription'"
+          decoration-muted="payment_type == 'redemption'"
+          decoration-primary="payment_type == 'rights'"
+        />
+        <field name="net_profit_loss" />
+      </tree>
+    </field>
+  </record>
+
+     <!-- <record id="action_stock_invest_history_update_compute" model="ir.actions.server">
+       <field name="name">更新計算欄位</field>
+       <field name="model_id" ref="model_stock_invest_history"/>
+       <field name="binding_model_id" ref="model_stock_invest_history"/>
+       <field name="binding_view_types">tree</field>
+       <field name="state">code</field>
+       <field name="code">model.update_compute()</field>
+   </record> -->
+</odoo>

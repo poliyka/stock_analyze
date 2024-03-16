@@ -70,5 +70,22 @@
             <field name="domain_force">[(1, '=', 1)]</field>
         </record>
 
+        <!-- Invest History -->
+        <record id="ir_rule_stock_invest_history_user" model="ir.rule">
+            <field name="name">Stock Invest History User</field>
+            <field name="model_id" ref="model_stock_invest_history"/>
+            <field name="groups" eval="[(4, ref('stock_analyze.stock_user'))]"/>
+            <field name="domain_force">[(1,'=', 1)]</field>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="ir_rule_stock_invest_history_manager" model="ir.rule">
+            <field name="name">Stock Invest History Manager</field>
+            <field name="model_id" ref="model_stock_invest_history"/>
+            <field name="groups" eval="[(4, ref('stock_analyze.stock_manager'))]"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+        </record>
+
     </data>
 </odoo>

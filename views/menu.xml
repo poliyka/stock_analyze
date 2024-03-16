@@ -5,6 +5,20 @@
               name="股票"
               />
 
+    <!-- Invest History -->
+    <record id="action_stock_invest_history" model="ir.actions.act_window">
+        <field name="name">投資紀錄</field>
+        <field name="res_model">stock.invest.history</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_stock_invest_history"
+              name="投資紀錄"
+	            action="action_stock_invest_history"
+              parent="menu_stock_root"
+              sequence="1"
+              />
+
     <!-- Stock -->
     <record id="action_stock" model="ir.actions.act_window">
         <field name="name">股票基本資訊</field>
@@ -16,6 +30,7 @@
               name="股票清單"
 	            action="action_stock"
               parent="menu_stock_root"
+              sequence="2"
               />
 
     <!-- User -->
@@ -29,6 +44,7 @@
               name="投資人"
 	            action="action_stock_user"
               parent="menu_stock_root"
+              sequence="3"
               />
 
     <!-- Bank -->
@@ -42,6 +58,7 @@
               name="帳戶"
 	            action="action_stock_bank"
               parent="menu_stock_root"
+              sequence="4"
               />
 
     <!-- Invest -->
@@ -55,12 +72,14 @@
               name="入帳紀錄"
 	            action="action_stock_invest"
               parent="menu_stock_root"
+              sequence="5"
               />
 
     <!-- Other -->
     <menuitem id="menu_stock_other"
               name="其他"
               parent="menu_stock_root"
+              sequence="6"
               />
 
 </odoo>
