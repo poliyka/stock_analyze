@@ -1,16 +1,23 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
+
 access_stock_user,Stock Access,model_stock,stock_user,1,1,0,0
 access_stock_manager,Stock Manager Access,model_stock,stock_manager,1,1,1,1
+access_stock_group1,Stock Group1 Access,model_stock,stock_group1,1,1,1,1
 
 access_stock_user_user,Stock User Access,model_stock_user,stock_user,1,1,0,0
 access_stock_user_manager,Stock User Manager Access,model_stock_user,stock_manager,1,1,1,1
+access_stock_user_group1,Stock User Group1 Access,model_stock_user,stock_group1,1,1,1,1
 
 access_stock_bank_user,Stock Bank Access,model_stock_bank,stock_user,1,1,0,0
 access_stock_bank_manager,Stock Bank Manager Access,model_stock_bank,stock_manager,1,1,1,1
+access_stock_bank_group1,Stock Bank Group1 Access,model_stock_bank,stock_group1,1,1,1,1
 
 access_stock_invest_user,Stock Invest Access,model_stock_invest,stock_user,1,1,0,0
 access_stock_invest_manager,Stock Invest Manager Access,model_stock_invest,stock_manager,1,1,1,1
+access_stock_invest_group1,Stock Invest Group1 Access,model_stock_invest,stock_group1,1,1,1,1
+
 
 access_stock_invest_history_user,Stock Invest History Access,model_stock_invest_history,stock_user,1,1,0,0
 access_stock_invest_history_manager,Stock Invest History Manager Access,model_stock_invest_history,stock_manager,1,1,1,1
+access_stock_invest_history_group1,Stock Invest History Group1 Access,model_stock_invest_history,stock_group1,1,1,1,1

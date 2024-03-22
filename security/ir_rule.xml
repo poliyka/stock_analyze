@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data noupdate="1">
+    <data noupdate="0">
 
         <!-- Stock -->
         <record id="ir_rule_stock_user" model="ir.rule">
@@ -19,6 +19,13 @@
             <field name="domain_force">[(1, '=', 1)]</field>
         </record>
 
+        <record id="ir_rule_stock_group1" model="ir.rule">
+            <field name="name">Stock Group1</field>
+            <field name="model_id" ref="model_stock"/>
+            <field name="groups" eval="[(4, ref('stock_analyze.stock_group1'))]"/>
+            <field name="domain_force">[('create_uid.groups_id.name', '=', 'Group1'), ('create_uid', '=', user.id)]</field>
+        </record>
+
         <!-- User -->
         <record id="ir_rule_stock_user_user" model="ir.rule">
             <field name="name">Stock User User</field>
@@ -33,6 +40,13 @@
             <field name="name">Stock User Manager</field>
             <field name="model_id" ref="model_stock_user"/>
             <field name="groups" eval="[(4, ref('stock_analyze.stock_manager'))]"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+        </record>
+
+        <record id="ir_rule_stock_user_group1" model="ir.rule">
+            <field name="name">Stock User Group1</field>
+            <field name="model_id" ref="model_stock_user"/>
+            <field name="groups" eval="[(4, ref('stock_analyze.stock_group1'))]"/>
             <field name="domain_force">[(1, '=', 1)]</field>
         </record>
 
@@ -53,6 +67,13 @@
             <field name="domain_force">[(1, '=', 1)]</field>
         </record>
 
+        <record id="ir_rule_stock_bank_group1" model="ir.rule">
+            <field name="name">Stock Bank Group1</field>
+            <field name="model_id" ref="model_stock_bank"/>
+            <field name="groups" eval="[(4, ref('stock_analyze.stock_group1'))]"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+        </record>
+
         <!-- Invest -->
         <record id="ir_rule_stock_invest_user" model="ir.rule">
             <field name="name">Stock Invest User</field>
@@ -67,6 +88,13 @@
             <field name="name">Stock Invest Manager</field>
             <field name="model_id" ref="model_stock_invest"/>
             <field name="groups" eval="[(4, ref('stock_analyze.stock_manager'))]"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+        </record>
+
+        <record id="ir_rule_stock_invest_group1" model="ir.rule">
+            <field name="name">Stock Invest Group1</field>
+            <field name="model_id" ref="model_stock_invest"/>
+            <field name="groups" eval="[(4, ref('stock_analyze.stock_group1'))]"/>
             <field name="domain_force">[(1, '=', 1)]</field>
         </record>
 
@@ -85,6 +113,13 @@
             <field name="model_id" ref="model_stock_invest_history"/>
             <field name="groups" eval="[(4, ref('stock_analyze.stock_manager'))]"/>
             <field name="domain_force">[(1, '=', 1)]</field>
+        </record>
+
+        <record id="ir_rule_stock_invest_history_group1" model="ir.rule">
+            <field name="name">Stock Invest History Group1</field>
+            <field name="model_id" ref="model_stock_invest_history"/>
+            <field name="groups" eval="[(4, ref('stock_analyze.stock_group1'))]"/>
+            <field name="domain_force">[(bank_name, '=', "中信")]</field>
         </record>
 
     </data>

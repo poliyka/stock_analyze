@@ -51,7 +51,7 @@
     <field name="name">投資紀錄</field>
     <field name="model">stock.invest.history</field>
     <field name="arch" type="xml">
-      <tree default_order="date"
+      <tree default_order="date desc"
           multi_edit="1"
           editable="top"
           decoration-danger="payment_type == 'buy'"
@@ -74,7 +74,7 @@
         <field name="net_payment_receipt" />
         <field name="transaction_fee" />
         <field name="transaction_tax" />
-        <field name="payment_type" widget="badge"
+        <field name="payment_type" widget="selection_badge"
           decoration-danger="payment_type == 'buy'"
           decoration-success="payment_type == 'sell'"
           decoration-info="payment_type == 'subscription'"

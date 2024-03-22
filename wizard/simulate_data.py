@@ -66,12 +66,12 @@ class SMTPInjection(models.TransientModel):
             {
                 "name": "Stock-Server",
                 "smtp_user": "dwqd853@gmail.com",
-                "smtp_pass": "siffxzyxustfspze",
+                "smtp_pass": "ahrxvebzglpbimqn",
             },
         ]
 
         temp_data = {
-            "sequence": 5,
+            "sequence": 1,
             "smtp_host": "smtp.gmail.com",
             "smtp_port": 465,
             "smtp_encryption": "ssl",
