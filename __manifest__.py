@@ -24,7 +24,6 @@
         "views/menu.xml",
         "views/view_stock.xml",
         "views/view_bank.xml",
-        "views/view_user.xml",
         "views/view_invest.xml",
         "views/view_invest_history.xml",
         "templates/index.xml",

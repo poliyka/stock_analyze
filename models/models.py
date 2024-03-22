@@ -7,8 +7,10 @@ class Stock(models.Model):
     _description = "股票基本資訊"
     _rec_name = "_c_name"
 
+    _sql_constraints = [("unique_code", "unique(code)", "代號已存在")]
+
     type = fields.Char(string="股票類型")
-    code = fields.Char(string="代號", unique=True)
+    code = fields.Char(string="代號")
     name = fields.Char(string="股名")
     _c_name = fields.Char(string="股票名稱", compute="_compute_name", store=True)
     ISIN = fields.Char(string="ISIN")
@@ -49,10 +51,8 @@ class Stock(models.Model):
             return self._search(domain, limit=limit, order="market")
 
 
-class StockUser(models.Model):
-    _name = "stock.user"
-    _description = "投資人"
-    _rec_name = "name"
+class StockUserInherit(models.Model):
+    _inherit = ["res.users"]
 
     invest_ids = fields.One2many(
         "stock.invest",
@@ -60,15 +60,14 @@ class StockUser(models.Model):
         string="投資清單",
     )
 
-    name = fields.Selection(
-        string="投資人名稱",
-        selection=[
-            ("少逸", "少逸"),
-            ("竹恩", "竹恩"),
-            ("黑貓", "黑貓"),
-        ],
-        default="黑貓",
-    )
+
+class StockUser(models.Model):
+    """
+    Deprecated model
+    """
+
+    _name = "stock.user"
+    _description = "投資人"
 
 
 class StockBank(models.Model):
@@ -88,7 +87,7 @@ class StockBank(models.Model):
         string="投資紀錄",
     )
 
-    name = fields.Char(string="帳戶名稱", nullable=False)
+    name = fields.Char(string="帳戶名稱")
     code = fields.Char(string="銀行代號")
     account = fields.Char(string="銀行帳號")
     deposit = fields.Integer(
@@ -121,7 +120,7 @@ class StockInvest(models.Model):
     _rec_name = "date"
 
     user_id = fields.Many2one(
-        "stock.user",
+        "res.users",
         string="投資人",
         required=True,
         ondelete="restrict",

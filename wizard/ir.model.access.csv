@@ -1,7 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 ,,,,,,,
-access_inject_stocks_data_user,Inject Stock Data User Access,model_inject_stocks_data,stock_user,1,0,0,0
 access_inject_stocks_data_manager,Inject Stock Data Manager Access,model_inject_stocks_data,stock_manager,1,1,1,1
 ,,,,,,,
-access_inject_outgoing_server_user,Inject Outgoing Server User Access,model_inject_outgoing_server,stock_user,1,0,0,0
 access_inject_outgoing_server_manager,Inject Outgoing Server Manager Access,model_inject_outgoing_server,stock_manager,1,1,1,1

@@ -86,12 +86,27 @@
     </field>
   </record>
 
-     <!-- <record id="action_stock_invest_history_update_compute" model="ir.actions.server">
-       <field name="name">更新計算欄位</field>
-       <field name="model_id" ref="model_stock_invest_history"/>
-       <field name="binding_model_id" ref="model_stock_invest_history"/>
-       <field name="binding_view_types">tree</field>
-       <field name="state">code</field>
-       <field name="code">model.update_compute()</field>
-   </record> -->
+  <record id="view_stock_invest_history_pivot" model="ir.ui.view">
+    <field name="name">投資紀錄樞紐分析</field>
+    <field name="model">stock.invest.history</field>
+    <field name="arch" type="xml">
+        <pivot>
+            <field name="date" interval="month" type="col"/>
+            <field name="stock_id" type="row"/>
+            <field name="amount" type="measure"/>
+            <field name="net_profit_loss" type="measure"/>
+        </pivot>
+    </field>
+  </record>
+
+  <record id="view_stock_invest_history_graph" model="ir.ui.view">
+    <field name="name">圖表</field>
+    <field name="model">stock.invest.history</field>
+    <field name="arch" type="xml">
+        <graph type="pie" >
+            <field name="stock_id"/>
+            <field name="amount" type="measure"/>
+        </graph>
+    </field>
+  </record>
 </odoo>

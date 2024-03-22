@@ -9,7 +9,7 @@
     <record id="action_stock_invest_history" model="ir.actions.act_window">
         <field name="name">投資紀錄</field>
         <field name="res_model">stock.invest.history</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,pivot,graph</field>
     </record>
 
     <menuitem id="menu_stock_invest_history"
@@ -33,20 +33,6 @@
               sequence="2"
               />
 
-    <!-- User -->
-    <record id="action_stock_user" model="ir.actions.act_window">
-        <field name="name">投資人</field>
-        <field name="res_model">stock.user</field>
-        <field name="view_mode">tree,form</field>
-    </record>
-
-    <menuitem id="menu_stock_user"
-              name="投資人"
-	            action="action_stock_user"
-              parent="menu_stock_root"
-              sequence="3"
-              />
-
     <!-- Bank -->
     <record id="action_stock_bank" model="ir.actions.act_window">
         <field name="name">帳戶</field>
@@ -58,28 +44,33 @@
               name="帳戶"
 	            action="action_stock_bank"
               parent="menu_stock_root"
-              sequence="4"
+              sequence="3"
               />
 
     <!-- Invest -->
     <record id="action_stock_invest" model="ir.actions.act_window">
         <field name="name">入帳紀錄</field>
         <field name="res_model">stock.invest</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,pivot</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                新增入帳紀錄
+            </p>
+        </field>
     </record>
 
     <menuitem id="menu_stock_invest"
               name="入帳紀錄"
 	            action="action_stock_invest"
               parent="menu_stock_root"
-              sequence="5"
+              sequence="4"
               />
 
     <!-- Other -->
     <menuitem id="menu_stock_other"
               name="其他"
               parent="menu_stock_root"
-              sequence="6"
+              sequence="5"
               />
 
 </odoo>

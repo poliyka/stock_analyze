@@ -1,26 +1,2 @@
 <odoo>
-  <record
-    id="padilla"
-    model="stock.storage"
-  >
-    <field name="name">Diana Padilla</field>
-    <field name="class_series">Diana Padilla</field>
-    <field name="price">123</field>
-  </record>
-  <record
-    id="carroll"
-    model="stock.storage"
-  >
-    <field name="name">Jody Carroll</field>
-    <field name="class_series">Jody Carroll</field>
-    <field name="price">123</field>
-  </record>
-  <record
-    id="vaughn"
-    model="stock.storage"
-  >
-    <field name="name">Lester Vaughn</field>
-    <field name="class_series">Lester Vaughn</field>
-    <field name="price">123</field>
-  </record>
 </odoo>
