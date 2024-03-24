@@ -82,6 +82,11 @@
           decoration-primary="payment_type == 'rights'"
         />
         <field name="net_profit_loss" />
+        <button name="settlement_profit" type="object"
+          class="oe_highlight fa fa-usd"
+          string="結算損益"
+          invisible="payment_type != 'sell'"
+        />
       </tree>
     </field>
   </record>
@@ -93,8 +98,7 @@
         <pivot>
             <field name="date" interval="month" type="col"/>
             <field name="stock_id" type="row"/>
-            <field name="amount" type="measure"/>
-            <field name="net_profit_loss" type="measure"/>
+            <field name="net_payment_receipt" type="measure"/>
         </pivot>
     </field>
   </record>

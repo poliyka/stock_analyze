@@ -1,5 +1,8 @@
 import math
 from odoo import api, fields, models
+from odoo.exceptions import ValidationError
+import debugpy
+from odoo.addons.stock_analyze.utils.core import CalculateNetProfitAndLoss
 
 
 class Stock(models.Model):
@@ -91,13 +94,13 @@ class StockBank(models.Model):
     code = fields.Char(string="銀行代號")
     account = fields.Char(string="銀行帳號")
     deposit = fields.Integer(
-        string="現有資金",
+        string="總投資金額",
         default=0,
         readonly=True,
         compute="_compute_deposit",
     )
     assets = fields.Integer(
-        string="投資資產",
+        string="總淨收付金額",
         default=0,
         readonly=True,
         compute="_compute_assets",
@@ -211,11 +214,11 @@ class StockInvestHistory(models.Model):
         """
         for record in self:
             if record.payment_type in ["buy", "subscription", "rights"]:
-                record.amount = -math.ceil(
+                record.amount = -math.floor(
                     record.current_price * (record.shares * 1000 + record.lots)
                 )
             elif record.payment_type in ["sell", "redemption"]:
-                record.amount = math.ceil(
+                record.amount = math.floor(
                     record.current_price * (record.shares * 1000 + record.lots)
                 )
             else:
@@ -228,8 +231,8 @@ class StockInvestHistory(models.Model):
         """
         for record in self:
             if record.payment_type in ["buy", "subscription", "rights"]:
-                record.net_payment_receipt = -record.transaction_fee
-            elif record.payment_type in ["sell"]:
+                record.net_payment_receipt = record.amount - record.transaction_fee
+            elif record.payment_type in ["sell", "redemption"]:
                 record.net_payment_receipt = (
                     record.amount - record.transaction_fee - record.transaction_tax
                 )
@@ -241,7 +244,7 @@ class StockInvestHistory(models.Model):
         default_fee = 20
         for record in self:
             if record.payment_type in ["buy", "sell"]:
-                fee = record.amount * 0.001425
+                fee = abs(record.amount * 0.001425)
                 if fee >= default_fee:
                     record.transaction_fee = fee
                 else:
@@ -267,3 +270,35 @@ class StockInvestHistory(models.Model):
             record._compute_net_payment_receipt()
             record._compute_transaction_fee()
             record._compute_transaction_tax()
+
+    def settlement_profit(self):
+        # debugpy.listen(("172.19.0.8", 5678))
+        # debugpy.wait_for_client()
+
+        for record in self:
+            # 查尋此 record 之前的 buy 記錄，並按日期排序
+            buy_records = record.search(
+                [
+                    ("bank_id", "=", record.bank_id.id),
+                    ("stock_id", "=", record.stock_id.id),
+                    ("payment_type", "in", ["buy", "rights", "subscription"]),
+                    ("date", "<=", record.date),
+                ],
+                order="date",
+            )
+
+            # 查詢此 record 之前的 sell 記錄，並按日期排序
+            sell_records = record.search(
+                [
+                    ("id", "!=", record.id),
+                    ("bank_id", "=", record.bank_id.id),
+                    ("stock_id", "=", record.stock_id.id),
+                    ("payment_type", "in", ["sell", "redemption"]),
+                    ("date", "<=", record.date),
+                    ("create_date", "<", record.create_date),
+                ],
+                order="date",
+            )
+
+            cal = CalculateNetProfitAndLoss(buy_records, sell_records, record)
+            record.net_profit_loss = cal.calculate()
